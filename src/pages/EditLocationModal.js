@@ -1,15 +1,18 @@
 //Calling all necessary packages and libraries
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectCategory, saveNewCategory, updateCategory } from '../features/categoriesSplice';
+import { /*useSelector,*/ useDispatch } from 'react-redux';
+import { /*selectCategory,*/ saveNewCategory, updateCategory } from '../features/categoriesSplice';
 import '../css/Modal.css';
 
 export default function Locations(props) {
     //declaration of state variables
     const showEditModal = props.show ? 'modal display-block' : 'modal display-none';
     const [isNewCategory, setIsNewCategory] = useState(false);
+    const [editLocation, setEditLocation] = useState("");
+    const [editAddress, setEditAddress] = useState("");
+    const [editCoordinates, setEditCoordinates] = useState("");
     const [editCategory, setEditCategory] = useState("");
-    const category = useSelector(selectCategory);
+    //const category = useSelector(selectCategory);
     const dispatch = useDispatch();
     //const location = useSelector((state) => state.location.value)
 
@@ -23,7 +26,7 @@ export default function Locations(props) {
         return () => isSubscribed = false;
     }, [props.cEditCategory, props.newCategoryAdd])
 
-    //expression to take care of editing category
+    //expression to take care of editing location
     const handleEditDetails = () => {
         return (
             isNewCategory ?
@@ -39,7 +42,16 @@ export default function Locations(props) {
         return props.handleClose();
     }
 
-    //expression to monitor input values during the editing
+    //expressions to monitor input values during the editing
+    const editLocationFunc = (e) => {
+        setEditLocation(e.target.value);
+    }
+    const editAddressFunc = (e) => {
+        setEditAddress(e.target.value);
+    }
+    const editCoordinatesFunc = (e) => {
+        setEditCoordinates(e.target.value);
+    }
     const editCategoryFunc = (e) => {
         setEditCategory(e.target.value);
     }
@@ -50,8 +62,20 @@ export default function Locations(props) {
                 <div className="modal-title">{isNewCategory ? <span>New Location</span> : <span>Edit Location</span>}</div>
                 <div className="category-info-div">
                     <div className="details-div">
-                        <label htmlFor="label-for-category" className="label-span">Name: </label>
-                        <input type="text" id="label-for-category" className="edit-category-input-text" placeholder="Location" value={editCategory} onChange={editCategoryFunc} />
+                        <label htmlFor="label-for-location-name" className="label-span">Name: </label>
+                        <input type="text" id="label-for-location-name" className="edit-category-input-text" placeholder="Location" value={editLocation} onChange={editLocationFunc} />
+                    </div>
+                    <div className="details-div">
+                        <label htmlFor="label-for-location-address" className="label-span">Address: </label>
+                        <input type="text" id="label-for-location-address" className="edit-category-input-text" placeholder="Address" value={editAddress} onChange={editAddressFunc} />
+                    </div>
+                    <div className="details-div">
+                        <label htmlFor="label-for-location-coordinates" className="label-span">Coordinates: </label>
+                        <input type="text" id="label-for-location-coordinates" className="edit-category-input-text" placeholder="Coordinates" value={editCoordinates} onChange={editCoordinatesFunc} />
+                    </div>
+                    <div className="details-div">
+                        <label htmlFor="label-for-location-category" className="label-span">Category: </label>
+                        <input type="text" id="label-for-location-category" className="edit-category-input-text" placeholder="Category" value={editCategory} onChange={editCategoryFunc} />
                     </div>
                 </div>
                 <div className="buttons-div">

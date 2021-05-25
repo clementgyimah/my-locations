@@ -30,13 +30,13 @@ export default function Locations(props) {
         setLocationTab("location-tab-active-div");
     }
 
-    //handle editing a category
+    //handle editing a location
     const handleEdit = (name) => {
         setAddNewLocation(false);
         setShowEditLocationModal(true);
     }
 
-    //handle deleting a category
+    //handle deleting a location
     const handleDelete = (name) => {
         console.log('Delete' + name);
     }
@@ -48,6 +48,9 @@ export default function Locations(props) {
 
     const openAddNewCategoryFunc = () => {
         setEditLocation("");
+        setEditAddress("");
+        setEditCoordinates("");
+        setEditCategory("");
         setAddNewLocation(true);
         setShowEditLocationModal(true);
     }
@@ -81,21 +84,21 @@ export default function Locations(props) {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="category-table-tbody-tr" key={null}>
+                            <tr className="category-table-tbody-tr" key={1}>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">Kumasi</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">LVB 6, BLK 6</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">E 70</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">Ghana</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span onClick={() => handleEdit('ghana')} id="edit-icon"><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
                             </tr>
-                            <tr className="category-table-tbody-tr" key={null}>
+                            <tr className="category-table-tbody-tr" key={2}>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">California</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">LVB 6, BLK 6</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">N 60</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">USA</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span id="edit-icon" onClick={() => handleEdit('ghana')}><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
                             </tr>
-                            <tr className="category-table-tbody-tr" key={null}>
+                            <tr className="category-table-tbody-tr" key={3}>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">London</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">LVB 6, BLK 6</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">S 80</div></td>

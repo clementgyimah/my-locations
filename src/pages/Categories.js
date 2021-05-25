@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Tabs.css';
 import { FaLayerGroup, FaEdit, FaTrashAlt } from 'react-icons/fa';
+import { /*getAllCategories,*/ catList } from '../features/categoriesSplice';
+import { useSelector, useDispatch } from 'react-redux';
 import { IoLocationSharp } from 'react-icons/io5';
 import { AiFillFolderAdd } from 'react-icons/ai';
 import { useHistory } from 'react-router-dom';
@@ -10,9 +12,24 @@ export default function Categories() {
     const [categoryTab, setCategoryTab] = useState("category-tab-active-div");
     const [locationTab, setLocationTab] = useState("location-tab-div");
     const [showEditModal, setShowEditModal] = useState(false);
+    //const [editId, setEditId] = useState("");
     const [addNewCategory, setAddNewCategory] = useState(false);
     const [editCategory, setEditCategory] = useState("");
+    //const [gottenCatList, setGottenCatList] = useState([])
     const history = useHistory();
+    const categoryList = useSelector(catList);
+    const dispatch = useDispatch();
+
+    //react hook that starts first when component mounts or any of the varibales in the array changes
+    useEffect(() => {
+        var isSubscribed = true;
+        if (isSubscribed) {
+            //dispatch(getAllCategories());
+            //setGottenCatList(categoryList);
+            //console.log(categoryList);
+        }
+        return () => isSubscribed = false;
+    }, [categoryList, dispatch]);
 
     //expression to make category tab active
     const categoryTabFunc = () => {
@@ -56,7 +73,7 @@ export default function Categories() {
                 <div className="add-category-icon" onClick={() => openAddNewCategoryFunc()}><AiFillFolderAdd color="white" size={35} /></div>
             </header>
             <div className="category-body">
-            <EditModal show={showEditModal} newCategoryAdd={addNewCategory} cEditCategory={editCategory} handleClose={() => closeTempModal()} />
+                <EditModal show={showEditModal} newCategoryAdd={addNewCategory} /*cEditId={editId}*/ cEditCategory={editCategory} handleClose={() => closeTempModal()} />
                 {/**table div */}
                 <div className="category-table-div">
                     <table className="category-table" rules="all">
@@ -67,15 +84,15 @@ export default function Categories() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="category-table-tbody-tr" key={null}>
+                            <tr className="category-table-tbody-tr" key={1}>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">Ghana</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span onClick={() => handleEdit('ghana')} id="edit-icon"><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
                             </tr>
-                            <tr className="category-table-tbody-tr" key={null}>
+                            <tr className="category-table-tbody-tr" key={2}>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">USA</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span id="edit-icon" onClick={() => handleEdit('ghana')}><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
                             </tr>
-                            <tr className="category-table-tbody-tr" key={null}>
+                            <tr className="category-table-tbody-tr" key={3}>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">Spain</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span id="edit-icon" onClick={() => handleEdit('ghana')}><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
                             </tr>

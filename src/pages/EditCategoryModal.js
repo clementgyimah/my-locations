@@ -1,15 +1,16 @@
 //Calling all necessary packages and libraries
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectCategory, saveNewCategory, updateCategory } from '../features/categoriesSplice';
+import { /*useSelector,*/ useDispatch } from 'react-redux';
+import { /*selectCategory,*/ saveNewCategory, updateCategory } from '../features/categoriesSplice';
 import '../css/Modal.css';
 
 export default function Locations(props) {
     //declaration of state variables
     const showEditModal = props.show ? 'modal display-block' : 'modal display-none';
     const [isNewCategory, setIsNewCategory] = useState(false);
+    const[editId, setEditId] = useState("");
     const [editCategory, setEditCategory] = useState("");
-    const category = useSelector(selectCategory);
+    //const category = useSelector(selectCategory);
     const dispatch = useDispatch();
     //const location = useSelector((state) => state.location.value)
 
@@ -17,18 +18,19 @@ export default function Locations(props) {
     useEffect(() => {
         var isSubscribed = true;
         if (isSubscribed) {
+            setEditId(props.cEditId)
             setEditCategory(props.cEditCategory);
             setIsNewCategory(props.newCategoryAdd);
         }
         return () => isSubscribed = false;
-    }, [props.cEditCategory, props.newCategoryAdd])
+    }, [props.cEditCategory, props.cEditId, props.newCategoryAdd])
 
     //expression to take care of editing category
     const handleEditDetails = () => {
         return (
             isNewCategory ?
                 dispatch(saveNewCategory(editCategory)) :
-                dispatch(updateCategory(editCategory))
+                dispatch(updateCategory({ categoryId: editId, categoryName: editCategory}))
         );
     }
 
