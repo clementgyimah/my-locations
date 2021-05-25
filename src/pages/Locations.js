@@ -89,21 +89,21 @@ export default function Locations(props) {
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">LVB 6, BLK 6</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">E 70</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">Ghana</div></td>
-                                <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span onClick={() => handleEdit('ghana')} id="edit-icon"><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
+                                <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span onClick={() => handleEdit('Kumasi')} id="edit-icon"><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
                             </tr>
                             <tr className="category-table-tbody-tr" key={2}>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">California</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">LVB 6, BLK 6</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">N 60</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">USA</div></td>
-                                <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span id="edit-icon" onClick={() => handleEdit('ghana')}><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
+                                <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span id="edit-icon" onClick={() => handleEdit('California')}><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
                             </tr>
                             <tr className="category-table-tbody-tr" key={3}>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">London</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">LVB 6, BLK 6</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">S 80</div></td>
                                 <td className="category-table-tbody-tr-td"><div className="table-cells-div">England</div></td>
-                                <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span id="edit-icon" onClick={() => handleEdit('ghana')}><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
+                                <td className="category-table-tbody-tr-td"><div className="table-cells-div"><span id="edit-icon" onClick={() => handleEdit('London')}><FaEdit color="#387C44" size={15} /></span><span onClick={() => handleDelete('ghana')} id="delete-icon"><FaTrashAlt color="#387C44" size={15} /></span></div></td>
                             </tr>
                         </tbody>
                     </table>
